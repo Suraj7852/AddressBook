@@ -8,9 +8,9 @@
     "phoneNo": "7739427302"
   },
   {
-    "name": "shubham",
-    "address": "D-T-1964",
-    "city": "ranchi",
+    "name": "raju",
+    "address": "D-T-1965",
+    "city": "Bangalore",
     "state": "jharkhand",
     "zip": "834004",
     "phoneNo": "7739427302"
@@ -22,5 +22,6 @@
     "state": "jharkhand",
     "zip": "834004",
     "phoneNo": "7739427302"
-  }
+  },
+  {}
 ]

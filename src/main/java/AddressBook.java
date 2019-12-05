@@ -51,6 +51,17 @@ public class AddressBook implements AddressBookContract {
         writeToJSON(addPersonList);
     }
 
+    @Override
+    public void printEntries() {
+        int slNo = 0;
+        System.out.println("Sl"+"\t"+"Name"+"\t"+"Address"+"\t"+"    City"+"\t"+"State"+"\t"+"    Zip"+"\t"+"    Phone");
+        for (int details=0; details<readPersonDetails.length; details++) {
+            if (readPersonDetails[details].getName() != null)
+                System.out.println(slNo + "\t" + readPersonDetails[details].getName() + "\t" + readPersonDetails[details].getAddress() + "\t" + readPersonDetails[details].getCity() + "\t" + readPersonDetails[details].getState() + "\t" + readPersonDetails[details].getZip() + "\t" + readPersonDetails[details].getPhoneNo());
+            slNo++;
+        }
+    }
+
     private void writeToJSON(List<AddressBookPOJO> addPersonList) throws IOException {
         String json = gson.toJson(addPersonList);
         FileWriter writer = new FileWriter(SAMPLE_CSV_FILE_PATH_JSON);

@@ -13,6 +13,12 @@ public class AddressBookTest {
     @Test
     public void editPersonDetails() throws IOException {
         AddressBook addressBook = new AddressBook();
-        addressBook.editPersonDetails(1,"name","shubham");
+        addressBook.editPersonDetails(1,"city","Bangalore");
+    }
+
+    @Test
+    public void printingDetails() throws FileNotFoundException {
+        AddressBook addressBook = new AddressBook();
+        addressBook.printEntries();
     }
 }
