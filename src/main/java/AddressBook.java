@@ -62,6 +62,16 @@ public class AddressBook implements AddressBookContract {
         }
     }
 
+    @Override
+    public void deleteAPerson(int slNo) throws IOException {
+        for (int details=0; details<readPersonDetails.length; details++) {
+            if (slNo != details)
+                addPersonList.add(readPersonDetails[details]);
+        }
+        addPersonList.add(addressBookPOJO);
+        writeToJSON(addPersonList);
+    }
+
     private void writeToJSON(List<AddressBookPOJO> addPersonList) throws IOException {
         String json = gson.toJson(addPersonList);
         FileWriter writer = new FileWriter(SAMPLE_CSV_FILE_PATH_JSON);
