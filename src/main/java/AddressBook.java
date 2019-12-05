@@ -116,4 +116,13 @@ public class AddressBook implements AddressBookContract {
                 addPersonList.add(readPersonDetails[details]);
         }
     }
+
+    public File[] existingFile() {
+        String path = "/home/admin1/Desktop/suraj/AdressBook/src/main/resources/";
+        File file = new File(path);
+        File[] files = file.listFiles();
+        for (File i: files)
+            System.out.println(i);
+        return files;
+    }
 }

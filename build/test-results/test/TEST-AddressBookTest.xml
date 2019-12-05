@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="AddressBookTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-12-05T10:17:10" hostname="admin1-desktop" time="0.035">
+<testsuite name="AddressBookTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-12-05T10:19:30" hostname="admin1-desktop" time="0.031">
   <properties/>
-  <testcase name="createAddressBook" classname="AddressBookTest" time="0.035"/>
+  <testcase name="existingAddressBook" classname="AddressBookTest" time="0.031"/>
   <system-out><![CDATA[/home/admin1/Desktop/suraj/AdressBook/src/main/resources/newAddressBook.json
+/home/admin1/Desktop/suraj/AdressBook/src/main/resources/addressBook.json
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

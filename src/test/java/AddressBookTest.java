@@ -45,4 +45,10 @@ public class AddressBookTest {
         AddressBook addressBook = new AddressBook();
         addressBook.createNewAddressBook("newAddressBook");
     }
+
+    @Test
+    public void existingAddressBook() throws IOException {
+        AddressBook addressBook = new AddressBook();
+        addressBook.existingFile();
+    }
 }
