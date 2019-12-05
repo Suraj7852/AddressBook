@@ -33,4 +33,10 @@ public class AddressBookTest {
         AddressBook addressBook = new AddressBook();
         addressBook.sortEntitiesByName();
     }
+
+    @Test
+    public void sortByZip() throws IOException {
+        AddressBook addressBook = new AddressBook();
+        addressBook.sortEntitiesByZip();
+    }
 }

@@ -7,4 +7,5 @@ public interface AddressBookContract {
     void printEntries();
     void deleteAPerson(int slNo) throws IOException;
     void sortEntitiesByName() throws IOException;
+    void sortEntitiesByZip() throws IOException;
 }

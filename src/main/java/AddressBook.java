@@ -81,6 +81,14 @@ public class AddressBook implements AddressBookContract {
         writeToJSON(addPersonList);
     }
 
+    @Override
+    public void sortEntitiesByZip() throws IOException {
+        readJSONFile();
+        Comparator<AddressBookPOJO> comparing = Comparator.comparing(AddressBookPOJO::getZip);
+        addPersonList.sort(comparing);
+        writeToJSON(addPersonList);
+    }
+
     private void writeToJSON(List<AddressBookPOJO> addPersonList) throws IOException {
         String json = gson.toJson(addPersonList);
         FileWriter writer = new FileWriter(SAMPLE_CSV_FILE_PATH_JSON);
