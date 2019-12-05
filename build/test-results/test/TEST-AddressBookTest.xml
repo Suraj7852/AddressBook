@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="AddressBookTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-12-05T10:25:46" hostname="admin1-desktop" time="0.033">
+<testsuite name="AddressBookTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-12-05T12:17:35" hostname="admin1-desktop" time="0.033">
   <properties/>
-  <testcase name="openExistingFile" classname="AddressBookTest" time="0.033"/>
-  <system-out><![CDATA[path is: /home/admin1/Desktop/suraj/AdressBook/src/main/resources/newAddressBook.json
-]]></system-out>
+  <testcase name="addingAPersonToAddressBook" classname="AddressBookTest" time="0.033"/>
+  <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

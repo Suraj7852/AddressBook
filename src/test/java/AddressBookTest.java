@@ -6,8 +6,8 @@ import java.io.IOException;
 public class AddressBookTest {
     @Test
     public void addingAPersonToAddressBook() throws IOException {
-        AddressBook addressBook = new AddressBook();
-        addressBook.addPerson("shubham","D-T-1964","ranchi","jharkhand","834003","7739427302");
+        AddressBook addressBook = new AddressBook("/home/admin1/Desktop/suraj/AdressBook/src/main/resources/newAddressBook.json");
+        addressBook.addPerson("shri","D-T-1964","ranchi","jharkhand","834003","7739427302");
     }
 
     @Test
@@ -18,13 +18,13 @@ public class AddressBookTest {
 
     @Test
     public void printingDetails() throws FileNotFoundException {
-        AddressBook addressBook = new AddressBook();
+        AddressBook addressBook = new AddressBook("/home/admin1/Desktop/suraj/AdressBook/src/main/resources/addressBook.json");
         addressBook.printEntries();
     }
 
     @Test
     public void deletingPersonDetails() throws IOException {
-        AddressBook addressBook = new AddressBook();
+        AddressBook addressBook = new AddressBook("/home/admin1/Desktop/suraj/AdressBook/src/main/resources/addressBook.json");
         addressBook.deleteAPerson(0);
     }
 
@@ -53,8 +53,15 @@ public class AddressBookTest {
     }
 
     @Test
-    public void openExistingFile() throws FileNotFoundException {
+    public void openExistingFile() throws IOException {
         AddressBook addressBook = new AddressBook();
-        addressBook.openExistingFile("newAddressBook.json");
+        addressBook.openExistingFile(0);
+        addressBook.addPerson("shubham","D-T-1964","ranchi","jharkhand","834003","7739427302");
+    }
+
+    @Test
+    public void printFiles() {
+        AddressBook addressBook = new AddressBook();
+        addressBook.printFiles();
     }
 }

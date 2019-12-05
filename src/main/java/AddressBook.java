@@ -6,14 +6,20 @@ import java.util.Comparator;
 import java.util.List;
 
 public class AddressBook implements AddressBookContract {
-    String SAMPLE_CSV_FILE_PATH_JSON = "/home/admin1/Desktop/suraj/AdressBook/src/main/resources/addressBook.json";
-    Gson gson = new Gson();
-    BufferedReader br = new BufferedReader(new FileReader(SAMPLE_CSV_FILE_PATH_JSON));
-    AddressBookPOJO[] readPersonDetails = gson.fromJson(br, AddressBookPOJO[].class);
     AddressBookPOJO addressBookPOJO = new AddressBookPOJO();
     List<AddressBookPOJO> addPersonList = new ArrayList<>();
+    AddressBookPOJO[] readPersonDetails;
+    String SAMPLE_CSV_FILE_PATH_JSON;
+    Gson gson = new Gson();
 
-    public AddressBook() throws FileNotFoundException {
+    public AddressBook(String path) throws FileNotFoundException {
+        SAMPLE_CSV_FILE_PATH_JSON = path;
+        BufferedReader br = new BufferedReader(new FileReader(SAMPLE_CSV_FILE_PATH_JSON));
+        readPersonDetails = gson.fromJson(br, AddressBookPOJO[].class);
+    }
+
+    public AddressBook(){
+
     }
 
     @Override
@@ -124,13 +130,20 @@ public class AddressBook implements AddressBookContract {
         return files;
     }
 
-    public String openExistingFile(String fileName) {
+    public void openExistingFile(int slNo) throws FileNotFoundException {
         Object filepath = null;
         File[] file = existingFile();
-        for (File files: file) {
-            if (files.getName().equals(fileName))
-                filepath = files;
+        filepath = file[slNo];
+        new AddressBook(filepath.toString());
+    }
+
+    public void printFiles() {
+        File[] files = existingFile();
+        int slNo=0;
+        System.out.println("slNo"+"\t"+"Files");
+        for (File file: files) {
+            System.out.println(slNo+"\t"+"\t"+file.getName());
+            slNo++;
         }
-        return filepath.toString();
     }
 }
