@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="AddressBookTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-12-05T05:45:29" hostname="admin1-desktop" time="0.031">
+<testsuite name="AddressBookTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-12-05T06:30:32" hostname="admin1-desktop" time="0.049">
   <properties/>
-  <testcase name="printingDetails" classname="AddressBookTest" time="0.031"/>
-  <system-out><![CDATA[Sl	Name	Address	    City	State	    Zip	    Phone
-0	suraj	D-T-1964	ranchi	jharkhand	834004	7739427302
-1	shubham	D-T-1964	ranchi	jharkhand	834004	7739427302
-]]></system-out>
+  <testcase name="sortByName" classname="AddressBookTest" time="0.049"/>
+  <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

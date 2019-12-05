@@ -1,1 +1,34 @@
-[{"name":"suraj","address":"D-T-1964","city":"ranchi","state":"jharkhand","zip":"834004","phoneNo":"7739427302"},{"name":"shubham","address":"D-T-1964","city":"ranchi","state":"jharkhand","zip":"834004","phoneNo":"7739427302"},{}]
+[
+  {
+    "name": "anish",
+    "address": "D-T-1964",
+    "city": "ranchi",
+    "state": "jharkhand",
+    "zip": "834001",
+    "phoneNo": "7739427302"
+  },
+  {
+    "name": "raju",
+    "address": "D-T-1964",
+    "city": "ranchi",
+    "state": "jharkhand",
+    "zip": "834004",
+    "phoneNo": "7739427302"
+  },
+  {
+    "name": "suraj",
+    "address": "D-T-1964",
+    "city": "ranchi",
+    "state": "jharkhand",
+    "zip": "834004",
+    "phoneNo": "7739427302"
+  },
+  {
+    "name": "zafar",
+    "address": "D-T-1964",
+    "city": "ranchi",
+    "state": "jharkhand",
+    "zip": "834002",
+    "phoneNo": "7739427302"
+  }
+]

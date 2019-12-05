@@ -7,7 +7,7 @@ public class AddressBookTest {
     @Test
     public void addingAPersonToAddressBook() throws IOException {
         AddressBook addressBook = new AddressBook();
-        addressBook.addPerson("raju","D-T-1964","ranchi","jharkhand","834004","7739427302");
+        addressBook.addPerson("shubham","D-T-1964","ranchi","jharkhand","834003","7739427302");
     }
 
     @Test
@@ -26,5 +26,11 @@ public class AddressBookTest {
     public void deletingPersonDetails() throws IOException {
         AddressBook addressBook = new AddressBook();
         addressBook.deleteAPerson(0);
+    }
+
+    @Test
+    public void sortByName() throws IOException {
+        AddressBook addressBook = new AddressBook();
+        addressBook.sortEntitiesByName();
     }
 }

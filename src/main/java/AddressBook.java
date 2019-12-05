@@ -2,6 +2,7 @@ import com.google.gson.Gson;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class AddressBook implements AddressBookContract {
@@ -23,10 +24,10 @@ public class AddressBook implements AddressBookContract {
         addressBookPOJO.setState(state);
         addressBookPOJO.setZip(zip);
         addressBookPOJO.setPhoneNo(phNo);
-        addPersonList.add(addressBookPOJO);
-        if (readPersonDetails!=null) {
+        if (readPersonDetails.length > 0) {
             readJSONFile();
         }
+        addPersonList.add(addressBookPOJO);
         writeToJSON(addPersonList);
     }
 
@@ -69,6 +70,14 @@ public class AddressBook implements AddressBookContract {
                 addPersonList.add(readPersonDetails[details]);
         }
         addPersonList.add(addressBookPOJO);
+        writeToJSON(addPersonList);
+    }
+
+    @Override
+    public void sortEntitiesByName() throws IOException {
+        readJSONFile();
+        Comparator<AddressBookPOJO> comparing = Comparator.comparing(AddressBookPOJO::getName);
+        addPersonList.sort(comparing);
         writeToJSON(addPersonList);
     }
 
