@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="AddressBookTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-12-04T11:40:13" hostname="admin1-desktop" time="0.271">
+<testsuite name="AddressBookTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-12-05T05:05:22" hostname="admin1-desktop" time="0.035">
   <properties/>
-  <testcase name="addingAPersonToAddressBook" classname="AddressBookTest" time="0.271"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="addingAPersonToAddressBook" classname="AddressBookTest" time="0.035"/>
+  <system-out><![CDATA[Sl	Name	Address	    City	State	    Zip	    Phone
+0	shubham	D-T-1964	ranchi	jharkhand	834004	7739427302
+1	shubham	D-T-1964	ranchi	jharkhand	834004	7739427302
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
