@@ -121,8 +121,16 @@ public class AddressBook implements AddressBookContract {
         String path = "/home/admin1/Desktop/suraj/AdressBook/src/main/resources/";
         File file = new File(path);
         File[] files = file.listFiles();
-        for (File i: files)
-            System.out.println(i);
         return files;
+    }
+
+    public String openExistingFile(String fileName) {
+        Object filepath = null;
+        File[] file = existingFile();
+        for (File files: file) {
+            if (files.getName().equals(fileName))
+                filepath = files;
+        }
+        return filepath.toString();
     }
 }

@@ -51,4 +51,10 @@ public class AddressBookTest {
         AddressBook addressBook = new AddressBook();
         addressBook.existingFile();
     }
+
+    @Test
+    public void openExistingFile() throws FileNotFoundException {
+        AddressBook addressBook = new AddressBook();
+        addressBook.openExistingFile("newAddressBook.json");
+    }
 }
