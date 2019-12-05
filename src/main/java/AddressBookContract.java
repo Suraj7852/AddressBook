@@ -8,4 +8,5 @@ public interface AddressBookContract {
     void deleteAPerson(int slNo) throws IOException;
     void sortEntitiesByName() throws IOException;
     void sortEntitiesByZip() throws IOException;
+    void createNewAddressBook(String path) throws IOException;
 }

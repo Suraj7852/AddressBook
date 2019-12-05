@@ -39,4 +39,10 @@ public class AddressBookTest {
         AddressBook addressBook = new AddressBook();
         addressBook.sortEntitiesByZip();
     }
+
+    @Test
+    public void createAddressBook() throws IOException {
+        AddressBook addressBook = new AddressBook();
+        addressBook.createNewAddressBook("newAddressBook");
+    }
 }

@@ -89,6 +89,19 @@ public class AddressBook implements AddressBookContract {
         writeToJSON(addPersonList);
     }
 
+    @Override
+    public void createNewAddressBook(String fileName) throws IOException {
+        String path = "/home/admin1/Desktop/suraj/AdressBook/src/main/resources/";
+        File file = new File(path+fileName+".json");
+        file.createNewFile();
+        System.out.println(file);
+        List<String> list = new ArrayList<>();
+        String json = gson.toJson(list);
+        FileWriter writer = new FileWriter(file);
+        writer.write(json);
+        writer.close();
+    }
+
     private void writeToJSON(List<AddressBookPOJO> addPersonList) throws IOException {
         String json = gson.toJson(addPersonList);
         FileWriter writer = new FileWriter(SAMPLE_CSV_FILE_PATH_JSON);
