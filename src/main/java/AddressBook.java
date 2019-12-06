@@ -97,10 +97,12 @@ public class AddressBook implements AddressBookContract {
     }
 
     @Override
-    public void sortEntitiesByName() throws IOException {
+    public boolean sortEntitiesByName() throws IOException {
         readJSONFile();
         Comparator<AddressBookPOJO> comparing = Comparator.comparing(AddressBookPOJO::getName);
         addPersonList.sort(comparing);
+        flag = true;
+        return flag;
     }
 
     @Override

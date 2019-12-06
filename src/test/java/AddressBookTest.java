@@ -43,8 +43,9 @@ public class AddressBookTest {
 
     @Test
     public void sortByName() throws IOException {
-        AddressBook addressBook = new AddressBook();
-        addressBook.sortEntitiesByName();
+        String s = addressBook.openExistingFile(1);
+        AddressBook addressBook = new AddressBook(s);
+        Assert.assertTrue(addressBook.sortEntitiesByName());
     }
 
     @Test

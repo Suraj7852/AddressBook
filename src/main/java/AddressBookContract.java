@@ -5,7 +5,7 @@ public interface AddressBookContract {
     boolean editPersonDetails(int slNo, String field, String value) throws IOException;
     boolean printEntries();
     boolean deleteAPerson(int slNo) throws IOException;
-    void sortEntitiesByName() throws IOException;
+    boolean sortEntitiesByName() throws IOException;
     void sortEntitiesByZip() throws IOException;
     void createNewAddressBook(String path) throws IOException;
 }
