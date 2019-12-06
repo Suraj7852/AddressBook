@@ -36,8 +36,9 @@ public class AddressBookTest {
 
     @Test
     public void deletingPersonDetails() throws IOException {
-        AddressBook addressBook = new AddressBook("/home/admin1/Desktop/suraj/AdressBook/src/main/resources/addressBook.json");
-        addressBook.deleteAPerson(0);
+        String s = addressBook.openExistingFile(1);
+        AddressBook addressBook = new AddressBook(s);
+        Assert.assertTrue(addressBook.deleteAPerson(0));
     }
 
     @Test

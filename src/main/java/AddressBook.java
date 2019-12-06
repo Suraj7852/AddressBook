@@ -86,12 +86,14 @@ public class AddressBook implements AddressBookContract {
     }
 
     @Override
-    public void deleteAPerson(int slNo) throws IOException {
+    public boolean deleteAPerson(int slNo) throws IOException {
         for (int details=0; details<readPersonDetails.length; details++) {
             if (slNo != details)
                 addPersonList.add(readPersonDetails[details]);
+            flag = true;
         }
         addPersonList.add(addressBookPOJO);
+        return flag;
     }
 
     @Override
