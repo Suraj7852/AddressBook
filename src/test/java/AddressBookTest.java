@@ -66,8 +66,11 @@ public class AddressBookTest {
 
     @Test
     public void existingAddressBook() throws IOException {
-        AddressBook addressBook = new AddressBook();
-        addressBook.existingFile();
+        String s = addressBook.openExistingFile(1);
+        AddressBook addressBook = new AddressBook(s);
+        File[] files = addressBook.existingFile();
+        int count = files.length;
+        Assert.assertEquals(count,5);
     }
 
     @Test
