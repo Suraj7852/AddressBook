@@ -3,7 +3,7 @@ import java.io.IOException;
 public interface AddressBookContract {
     boolean addPerson(String name, String address, String city, String state, String zip, String phNo) throws IOException;
     boolean editPersonDetails(int slNo, String field, String value) throws IOException;
-    void printEntries();
+    boolean printEntries();
     void deleteAPerson(int slNo) throws IOException;
     void sortEntitiesByName() throws IOException;
     void sortEntitiesByZip() throws IOException;

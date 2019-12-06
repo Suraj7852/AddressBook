@@ -73,14 +73,16 @@ public class AddressBook implements AddressBookContract {
     }
 
     @Override
-    public void printEntries() {
+    public boolean printEntries() {
         int slNo = 0;
         System.out.println("Sl"+"\t"+"Name"+"\t"+"Address"+"\t"+"    City"+"\t"+"State"+"\t"+"    Zip"+"\t"+"    Phone");
         for (int details=0; details<readPersonDetails.length; details++) {
             if (readPersonDetails[details].getName() != null)
                 System.out.println(slNo + "\t" + readPersonDetails[details].getName() + "\t" + readPersonDetails[details].getAddress() + "\t" + readPersonDetails[details].getCity() + "\t" + readPersonDetails[details].getState() + "\t" + readPersonDetails[details].getZip() + "\t" + readPersonDetails[details].getPhoneNo());
             slNo++;
+            flag = true;
         }
+        return flag;
     }
 
     @Override

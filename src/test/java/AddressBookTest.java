@@ -29,8 +29,9 @@ public class AddressBookTest {
 
     @Test
     public void printingDetails() throws FileNotFoundException {
-        AddressBook addressBook = new AddressBook("/home/admin1/Desktop/suraj/AdressBook/src/main/resources/addressBook.json");
-        addressBook.printEntries();
+        String s = addressBook.openExistingFile(1);
+        AddressBook addressBook = new AddressBook(s);
+        Assert.assertTrue(addressBook.printEntries());
     }
 
     @Test
