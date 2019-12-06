@@ -135,11 +135,13 @@ public class AddressBook implements AddressBookContract {
         writer.close();
     }
 
-    public void readJSONFile() {
+    public boolean readJSONFile() {
         for (int details=0; details<readPersonDetails.length; details++) {
             if (readPersonDetails[details].getName() != null)
                 addPersonList.add(readPersonDetails[details]);
+            flag = true;
         }
+        return flag;
     }
 
     public File[] existingFile() {

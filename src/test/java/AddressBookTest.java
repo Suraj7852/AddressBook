@@ -81,4 +81,11 @@ public class AddressBookTest {
     public void printFiles() {
         Assert.assertTrue(addressBook.printFiles());
     }
+
+    @Test
+    public void readingEntitiesFromJsonFile() throws FileNotFoundException {
+        String s = addressBook.openExistingFile(0);
+        AddressBook addressBook = new AddressBook(s);
+        Assert.assertTrue(addressBook.readJSONFile());
+    }
 }
