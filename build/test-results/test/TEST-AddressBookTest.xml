@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="AddressBookTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-12-06T10:35:47" hostname="admin1-desktop" time="0.008">
+<testsuite name="AddressBookTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-12-06T10:40:37" hostname="admin1-desktop" time="0.004">
   <properties/>
-  <testcase name="openExistingFile" classname="AddressBookTest" time="0.008"/>
-  <system-out><![CDATA[/home/admin1/Desktop/suraj/AdressBook/src/main/resources/vishal.json
+  <testcase name="printFiles" classname="AddressBookTest" time="0.004"/>
+  <system-out><![CDATA[slNo	Files
+0		vishal.json
+1		suraj.json
+2		newAddressBook.json
+3		newAddressBook2.json
+4		addressBook.json
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

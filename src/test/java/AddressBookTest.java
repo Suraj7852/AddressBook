@@ -58,16 +58,12 @@ public class AddressBookTest {
 
     @Test
     public void createAddressBook() throws IOException {
-        String s = addressBook.openExistingFile(1);
-        AddressBook addressBook = new AddressBook(s);
         String newAddressBook2 = addressBook.createNewAddressBook("newAddressBook2");
         Assert.assertEquals("newAddressBook2.json",newAddressBook2);
     }
 
     @Test
-    public void existingAddressBook() throws IOException {
-        String s = addressBook.openExistingFile(1);
-        AddressBook addressBook = new AddressBook(s);
+    public void existingAddressBook() {
         File[] files = addressBook.existingFile();
         int count = files.length;
         Assert.assertEquals(count,5);
@@ -78,13 +74,11 @@ public class AddressBookTest {
         String s = addressBook.openExistingFile(1);
         AddressBook addressBook = new AddressBook(s);
         String s1 = addressBook.openExistingFile(0);
-        System.out.println(s1);
         Assert.assertEquals(s1,"/home/admin1/Desktop/suraj/AdressBook/src/main/resources/vishal.json");
     }
 
     @Test
     public void printFiles() {
-        AddressBook addressBook = new AddressBook();
-        addressBook.printFiles();
+        Assert.assertTrue(addressBook.printFiles());
     }
 }
