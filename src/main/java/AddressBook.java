@@ -127,12 +127,13 @@ public class AddressBook implements AddressBookContract {
         return fileName+".json";
     }
 
-    public void writeToJSON() throws IOException {
+    public boolean writeToJSON() throws IOException {
         String json = gson.toJson(addPersonList);
         FileWriter writer = new FileWriter(filePath);
         writer.write(json);
         readJSONFile();
         writer.close();
+        return true;
     }
 
     public boolean readJSONFile() {

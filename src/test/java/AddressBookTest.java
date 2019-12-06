@@ -88,4 +88,11 @@ public class AddressBookTest {
         AddressBook addressBook = new AddressBook(s);
         Assert.assertTrue(addressBook.readJSONFile());
     }
+
+    @Test
+    public void writingPersonDetailsToJsonFile() throws IOException {
+        String s = addressBook.openExistingFile(0);
+        AddressBook addressBook = new AddressBook(s);
+        Assert.assertTrue(addressBook.writeToJSON());
+    }
 }
