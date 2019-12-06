@@ -20,11 +20,15 @@ public class AddressBookTest {
     }
 
     @Test
-    public void addingAPersonToAddressBook() throws AddressBookException {
-        String s = addressBook.openExistingFile(0,pathAddress);
-        AddressBook addressBook = new AddressBook(s);
-        boolean b = addressBook.addPerson("shri", "D-T-1964", "ranchi", "jharkhand", "834003", "7739427302");
-        Assert.assertTrue(b);
+    public void addingAPersonToAddressBook(){
+        try {
+            String s = addressBook.openExistingFile(0,pathAddress);
+            AddressBook addressBook = new AddressBook(s);
+            boolean b = addressBook.addPerson("shri", "D-T-1964", "ranchi", "jharkhand", "834003", "7739427302");
+            Assert.assertTrue(b);
+        } catch (AddressBookException e) {
+            Assert.assertEquals(AddressBookException.ExceptionType.NO_SUCH_FILE,e.type);
+        }
     }
 
     @Test
@@ -37,7 +41,23 @@ public class AddressBookTest {
         Assert.assertTrue(addressBook.editPersonDetails(0, "state", "jharkhand"));
         Assert.assertTrue(addressBook.editPersonDetails(0, "zip", "834004"));
         Assert.assertTrue(addressBook.editPersonDetails(0, "phoneNo", "9334158709"));
-        Assert.assertFalse(addressBook.editPersonDetails(0, "fggg", "suraj"));
+    }
+
+    @Test
+    public void editPersonDetailsIfWrongIndexValueThrowException(){
+        try {
+            String s = addressBook.openExistingFile(20,pathAddress);
+            AddressBook addressBook = new AddressBook(s);
+            Assert.assertTrue(addressBook.editPersonDetails(10, "name", "suraj"));
+            Assert.assertTrue(addressBook.editPersonDetails(0, "address", "bhubaneswar"));
+            Assert.assertTrue(addressBook.editPersonDetails(0, "city", "ranchi"));
+            Assert.assertTrue(addressBook.editPersonDetails(0, "state", "jharkhand"));
+            Assert.assertTrue(addressBook.editPersonDetails(0, "zip", "834004"));
+            Assert.assertTrue(addressBook.editPersonDetails(0, "phoneNo", "9334158709"));
+            Assert.assertFalse(addressBook.editPersonDetails(0, "fggg", "suraj"));
+        } catch (AddressBookException e) {
+            Assert.assertEquals(AddressBookException.ExceptionType.ARRAY_INDEX_OUT_OF_BOUND,e.type);
+        }
     }
 
     @Test
@@ -61,7 +81,14 @@ public class AddressBookTest {
     public void deletingPersonDetails() throws AddressBookException {
         String s = addressBook.openExistingFile(1,pathAddress);
         AddressBook addressBook = new AddressBook(s);
-        Assert.assertTrue(addressBook.deleteAPerson(7));
+        Assert.assertTrue(addressBook.deleteAPerson(2));
+    }
+
+    @Test
+    public void deletingPersonDetailsIfIndexValueIsWrong() throws AddressBookException {
+        String s = addressBook.openExistingFile(1,pathAddress);
+        AddressBook addressBook = new AddressBook(s);
+        Assert.assertFalse(addressBook.deleteAPerson(20));
     }
 
     @Test

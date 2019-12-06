@@ -28,7 +28,7 @@ public class AddressBook implements AddressBookContract {
     }
 
     @Override
-    public boolean addPerson(String name, String address, String city, String state, String zip, String phNo) {
+    public boolean addPerson(String name, String address, String city, String state, String zip, String phNo) throws AddressBookException {
         addressBookPOJO.setName(name);
         addressBookPOJO.setAddress(address);
         addressBookPOJO.setCity(city);
@@ -44,36 +44,41 @@ public class AddressBook implements AddressBookContract {
     }
 
     @Override
-    public boolean editPersonDetails(int slNo, String field, String value){
-        readJSONFile();
-        if (field.equals("name")){
-            readPersonDetails[slNo].setName(value);
-            flag = true;
+    public boolean editPersonDetails(int slNo, String field, String value) throws AddressBookException {
+        try {
+            readJSONFile();
+            if (field.equals("name")){
+                readPersonDetails[slNo].setName(value);
+                flag = true;
+            }
+            else if(field.equals("address")){
+                readPersonDetails[slNo].setAddress(value);
+                flag = true;
+            }
+            else if(field.equals("city")){
+                readPersonDetails[slNo].setCity(value);
+                flag = true;
+            }
+            else if (field.equals("state")){
+                readPersonDetails[slNo].setState(value);
+                flag = true;
+            }
+            else if (field.equals("zip")){
+                readPersonDetails[slNo].setZip(value);
+                flag = true;
+            }
+            else if (field.equals("phoneNo")){
+                readPersonDetails[slNo].setPhoneNo(value);
+                flag = true;
+            }
+            else
+                flag = false;
+            addPersonList.add(addressBookPOJO);
+            return flag;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new AddressBookException(AddressBookException.ExceptionType.ARRAY_INDEX_OUT_OF_BOUND,"Please enter valid slNo");
         }
-        else if(field.equals("address")){
-            readPersonDetails[slNo].setAddress(value);
-            flag = true;
-        }
-        else if(field.equals("city")){
-            readPersonDetails[slNo].setCity(value);
-            flag = true;
-        }
-        else if (field.equals("state")){
-            readPersonDetails[slNo].setState(value);
-            flag = true;
-        }
-        else if (field.equals("zip")){
-            readPersonDetails[slNo].setZip(value);
-            flag = true;
-        }
-        else if (field.equals("phoneNo")){
-            readPersonDetails[slNo].setPhoneNo(value);
-            flag = true;
-        }
-        else
-            flag = false;
-        addPersonList.add(addressBookPOJO);
-        return flag;
+
     }
 
     @Override
@@ -91,17 +96,19 @@ public class AddressBook implements AddressBookContract {
 
     @Override
     public boolean deleteAPerson(int slNo) {
-        for (int details=0; details<readPersonDetails.length; details++) {
-            if (slNo != details)
-                addPersonList.add(readPersonDetails[details]);
-            flag = true;
+        if (readPersonDetails.length>=slNo){
+            for (int details=0; details<readPersonDetails.length; details++) {
+                if (slNo != details)
+                    addPersonList.add(readPersonDetails[details]);
+                flag = true;
+            }
+            addPersonList.add(addressBookPOJO);
         }
-        addPersonList.add(addressBookPOJO);
         return flag;
     }
 
     @Override
-    public boolean sortEntitiesByName() {
+    public boolean sortEntitiesByName() throws AddressBookException {
         readJSONFile();
         Comparator<AddressBookPOJO> comparing = Comparator.comparing(AddressBookPOJO::getName);
         addPersonList.sort(comparing);
@@ -110,7 +117,7 @@ public class AddressBook implements AddressBookContract {
     }
 
     @Override
-    public boolean sortEntitiesByZip(){
+    public boolean sortEntitiesByZip() throws AddressBookException {
         readJSONFile();
         Comparator<AddressBookPOJO> comparing = Comparator.comparing(AddressBookPOJO::getZip);
         addPersonList.sort(comparing);
@@ -147,13 +154,17 @@ public class AddressBook implements AddressBookContract {
         }
     }
 
-    public boolean readJSONFile() {
-        for (int details=0; details<readPersonDetails.length; details++) {
-            if (readPersonDetails[details].getName() != null)
-                addPersonList.add(readPersonDetails[details]);
-            flag = true;
+    public boolean readJSONFile() throws AddressBookException {
+        try {
+            for (int details=0; details<readPersonDetails.length; details++) {
+                if (readPersonDetails[details].getName() != null)
+                    addPersonList.add(readPersonDetails[details]);
+                flag = true;
+            }
+            return flag;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new AddressBookException(AddressBookException.ExceptionType.ARRAY_INDEX_OUT_OF_BOUND,"Please enter valid slNo");
         }
-        return flag;
     }
 
     public File[] existingFile(String path) throws AddressBookException{
