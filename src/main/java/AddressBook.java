@@ -40,23 +40,36 @@ public class AddressBook implements AddressBookContract {
     }
 
     @Override
-    public void editPersonDetails(int slNo, String field, String value) throws IOException {
+    public boolean editPersonDetails(int slNo, String field, String value){
         readJSONFile();
-        if (field.equals("name"))
+        if (field.equals("name")){
             readPersonDetails[slNo].setName(value);
-        else if(field.equals("address"))
+            flag = true;
+        }
+        else if(field.equals("address")){
             readPersonDetails[slNo].setAddress(value);
-        else if(field.equals("city"))
+            flag = true;
+        }
+        else if(field.equals("city")){
             readPersonDetails[slNo].setCity(value);
-        else if (field.equals("state"))
+            flag = true;
+        }
+        else if (field.equals("state")){
             readPersonDetails[slNo].setState(value);
-        else if (field.equals("zip"))
+            flag = true;
+        }
+        else if (field.equals("zip")){
             readPersonDetails[slNo].setZip(value);
-        else if (field.equals("phoneNo"))
+            flag = true;
+        }
+        else if (field.equals("phoneNo")){
             readPersonDetails[slNo].setPhoneNo(value);
+            flag = true;
+        }
         else
-            System.out.println("Enter proper field");
+            flag = false;
         addPersonList.add(addressBookPOJO);
+        return flag;
     }
 
     @Override

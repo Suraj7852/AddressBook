@@ -16,7 +16,15 @@ public class AddressBookTest {
 
     @Test
     public void editPersonDetails() throws IOException {
-        addressBook.editPersonDetails(1,"city","Bangalore");
+        String s = addressBook.openExistingFile(1);
+        AddressBook addressBook = new AddressBook(s);
+        Assert.assertTrue(addressBook.editPersonDetails(0, "name", "suraj"));
+        Assert.assertTrue(addressBook.editPersonDetails(0, "address", "bhubaneswar"));
+        Assert.assertTrue(addressBook.editPersonDetails(0, "city", "ranchi"));
+        Assert.assertTrue(addressBook.editPersonDetails(0, "state", "jharkhand"));
+        Assert.assertTrue(addressBook.editPersonDetails(0, "zip", "834004"));
+        Assert.assertTrue(addressBook.editPersonDetails(0, "phoneNo", "9334158709"));
+        Assert.assertFalse(addressBook.editPersonDetails(0, "fggg", "suraj"));
     }
 
     @Test
