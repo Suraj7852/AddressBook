@@ -1,18 +1,21 @@
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class AddressBookTest {
+    AddressBook addressBook = new AddressBook();
     @Test
     public void addingAPersonToAddressBook() throws IOException {
-        AddressBook addressBook = new AddressBook("/home/admin1/Desktop/suraj/AdressBook/src/main/resources/newAddressBook.json");
-        addressBook.addPerson("shri","D-T-1964","ranchi","jharkhand","834003","7739427302");
+        String s = addressBook.openExistingFile(0);
+        AddressBook addressBook = new AddressBook(s);
+        boolean b = addressBook.addPerson("shri", "D-T-1964", "ranchi", "jharkhand", "834003", "7739427302");
+        Assert.assertTrue(b);
     }
 
     @Test
     public void editPersonDetails() throws IOException {
-        AddressBook addressBook = new AddressBook();
         addressBook.editPersonDetails(1,"city","Bangalore");
     }
 

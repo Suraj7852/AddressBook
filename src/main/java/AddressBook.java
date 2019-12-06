@@ -11,6 +11,7 @@ public class AddressBook implements AddressBookContract {
     AddressBookPOJO[] readPersonDetails;
     String filePath;
     Gson gson = new Gson();
+    boolean flag = false;
 
     public AddressBook(String path) throws FileNotFoundException {
         filePath = path;
@@ -23,7 +24,7 @@ public class AddressBook implements AddressBookContract {
     }
 
     @Override
-    public void addPerson(String name, String address, String city, String state, String zip, String phNo) {
+    public boolean addPerson(String name, String address, String city, String state, String zip, String phNo) {
         addressBookPOJO.setName(name);
         addressBookPOJO.setAddress(address);
         addressBookPOJO.setCity(city);
@@ -34,6 +35,8 @@ public class AddressBook implements AddressBookContract {
             readJSONFile();
         }
         addPersonList.add(addressBookPOJO);
+        flag = true;
+        return flag;
     }
 
     @Override
