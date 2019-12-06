@@ -75,9 +75,11 @@ public class AddressBookTest {
 
     @Test
     public void openExistingFile() throws IOException {
-        AddressBook addressBook = new AddressBook();
-        addressBook.openExistingFile(0);
-        addressBook.addPerson("shubham","D-T-1964","ranchi","jharkhand","834003","7739427302");
+        String s = addressBook.openExistingFile(1);
+        AddressBook addressBook = new AddressBook(s);
+        String s1 = addressBook.openExistingFile(0);
+        System.out.println(s1);
+        Assert.assertEquals(s1,"/home/admin1/Desktop/suraj/AdressBook/src/main/resources/vishal.json");
     }
 
     @Test

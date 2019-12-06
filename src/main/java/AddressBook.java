@@ -156,13 +156,15 @@ public class AddressBook implements AddressBookContract {
         return filepath.toString();
     }
 
-    public void printFiles() {
+    public boolean printFiles() {
         File[] files = existingFile();
         int slNo=0;
         System.out.println("slNo"+"\t"+"Files");
         for (File file: files) {
             System.out.println(slNo+"\t"+"\t"+file.getName());
             slNo++;
+            flag = true;
         }
+        return flag;
     }
 }
