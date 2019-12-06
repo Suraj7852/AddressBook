@@ -34,7 +34,6 @@ public class AddressBook implements AddressBookContract {
             readJSONFile();
         }
         addPersonList.add(addressBookPOJO);
-        writeToJSON(addPersonList);
     }
 
     @Override
@@ -55,7 +54,6 @@ public class AddressBook implements AddressBookContract {
         else
             System.out.println("Enter proper field");
         addPersonList.add(addressBookPOJO);
-        writeToJSON(addPersonList);
     }
 
     @Override
@@ -76,7 +74,6 @@ public class AddressBook implements AddressBookContract {
                 addPersonList.add(readPersonDetails[details]);
         }
         addPersonList.add(addressBookPOJO);
-        writeToJSON(addPersonList);
     }
 
     @Override
@@ -84,7 +81,6 @@ public class AddressBook implements AddressBookContract {
         readJSONFile();
         Comparator<AddressBookPOJO> comparing = Comparator.comparing(AddressBookPOJO::getName);
         addPersonList.sort(comparing);
-        writeToJSON(addPersonList);
     }
 
     @Override
@@ -92,7 +88,6 @@ public class AddressBook implements AddressBookContract {
         readJSONFile();
         Comparator<AddressBookPOJO> comparing = Comparator.comparing(AddressBookPOJO::getZip);
         addPersonList.sort(comparing);
-        writeToJSON(addPersonList);
     }
 
     @Override
@@ -100,7 +95,6 @@ public class AddressBook implements AddressBookContract {
         String path = "/home/admin1/Desktop/suraj/AdressBook/src/main/resources/";
         File file = new File(path+fileName+".json");
         file.createNewFile();
-        System.out.println(file);
         List<String> list = new ArrayList<>();
         String json = gson.toJson(list);
         FileWriter writer = new FileWriter(file);
@@ -108,7 +102,7 @@ public class AddressBook implements AddressBookContract {
         writer.close();
     }
 
-    private void writeToJSON(List<AddressBookPOJO> addPersonList) throws IOException {
+    public void writeToJSON() throws IOException {
         String json = gson.toJson(addPersonList);
         FileWriter writer = new FileWriter(SAMPLE_CSV_FILE_PATH_JSON);
         writer.write(json);
@@ -116,7 +110,7 @@ public class AddressBook implements AddressBookContract {
         writer.close();
     }
 
-    private void readJSONFile() {
+    public void readJSONFile() {
         for (int details=0; details<readPersonDetails.length; details++) {
             if (readPersonDetails[details].getName() != null)
                 addPersonList.add(readPersonDetails[details]);
@@ -130,11 +124,11 @@ public class AddressBook implements AddressBookContract {
         return files;
     }
 
-    public void openExistingFile(int slNo) throws FileNotFoundException {
+    public String openExistingFile(int slNo) {
         Object filepath = null;
         File[] file = existingFile();
         filepath = file[slNo];
-        new AddressBook(filepath.toString());
+        return filepath.toString();
     }
 
     public void printFiles() {
