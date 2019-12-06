@@ -9,12 +9,12 @@ public class AddressBook implements AddressBookContract {
     AddressBookPOJO addressBookPOJO = new AddressBookPOJO();
     List<AddressBookPOJO> addPersonList = new ArrayList<>();
     AddressBookPOJO[] readPersonDetails;
-    String SAMPLE_CSV_FILE_PATH_JSON;
+    String filePath;
     Gson gson = new Gson();
 
     public AddressBook(String path) throws FileNotFoundException {
-        SAMPLE_CSV_FILE_PATH_JSON = path;
-        BufferedReader br = new BufferedReader(new FileReader(SAMPLE_CSV_FILE_PATH_JSON));
+        filePath = path;
+        BufferedReader br = new BufferedReader(new FileReader(filePath));
         readPersonDetails = gson.fromJson(br, AddressBookPOJO[].class);
     }
 
@@ -23,7 +23,7 @@ public class AddressBook implements AddressBookContract {
     }
 
     @Override
-    public void addPerson(String name, String address, String city, String state, String zip, String phNo) throws IOException {
+    public void addPerson(String name, String address, String city, String state, String zip, String phNo) {
         addressBookPOJO.setName(name);
         addressBookPOJO.setAddress(address);
         addressBookPOJO.setCity(city);
@@ -104,7 +104,7 @@ public class AddressBook implements AddressBookContract {
 
     public void writeToJSON() throws IOException {
         String json = gson.toJson(addPersonList);
-        FileWriter writer = new FileWriter(SAMPLE_CSV_FILE_PATH_JSON);
+        FileWriter writer = new FileWriter(filePath);
         writer.write(json);
         readJSONFile();
         writer.close();

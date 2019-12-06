@@ -22,8 +22,8 @@ public class mainAddressBook {
                     String path = addressBook.openExistingFile(option);
                     System.out.println(path);
                     AddressBook addressBook1 = new AddressBook(path);
-                    boolean status = true;
-                    while ( status ) {
+                    String status = "true";
+                    while ( status.equals("true")) {
                         System.out.println("Enter your choice:\n1.ADD Person Details\n2.Edit Person Details\n3.Delete Person Detail\n4.Display Entity\n5.Sort By Name\n6.Sort By Zip\n7.save\n8.Go back to previous menu");
                         int choice1 = sc.nextInt();
                         switch (choice1) {
@@ -58,12 +58,15 @@ public class mainAddressBook {
                             case 7:
                                 addressBook1.writeToJSON();
                             case 8:
-                                status = false;
+                                status = "false";
                                 break;
                             default:
                                 System.out.println("Wrong entries Please enter valid input");
+                                break;
                         }
                     }
+                    System.out.println("////////////////////////////////////////////////////////////////");
+                    break;
                 case 3:
                     flag = false;
                     break;
