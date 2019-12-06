@@ -13,10 +13,14 @@ public class AddressBook implements AddressBookContract {
     Gson gson = new Gson();
     boolean flag = false;
 
-    public AddressBook(String path) throws FileNotFoundException {
-        filePath = path;
-        BufferedReader br = new BufferedReader(new FileReader(filePath));
-        readPersonDetails = gson.fromJson(br, AddressBookPOJO[].class);
+    public AddressBook(String path) throws AddressBookException {
+        try {
+            filePath = path;
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            readPersonDetails = gson.fromJson(br, AddressBookPOJO[].class);
+        } catch (FileNotFoundException e) {
+            throw new AddressBookException(AddressBookException.ExceptionType.NO_SUCH_FILE,"Please Enter proper file path");
+        }
     }
 
     public AddressBook(){
@@ -115,25 +119,32 @@ public class AddressBook implements AddressBookContract {
     }
 
     @Override
-    public String createNewAddressBook(String fileName) throws IOException {
-        String path = "/home/admin1/Desktop/suraj/AdressBook/src/main/resources/";
-        File file = new File(path+fileName+".json");
-        file.createNewFile();
-        List<String> list = new ArrayList<>();
-        String json = gson.toJson(list);
-        FileWriter writer = new FileWriter(file);
-        writer.write(json);
-        writer.close();
-        return fileName+".json";
+    public String createNewAddressBook(String fileName,String path) throws AddressBookException {
+        try {
+            File file = new File(path+fileName+".json");
+            file.createNewFile();
+            List<String> list = new ArrayList<>();
+            String json = gson.toJson(list);
+            FileWriter writer = new FileWriter(file);
+            writer.write(json);
+            writer.close();
+            return fileName+".json";
+        } catch (IOException e) {
+            throw new AddressBookException(AddressBookException.ExceptionType.IO_EXCEPTION,"You have entered some wrong path");
+        }
     }
 
-    public boolean writeToJSON() throws IOException {
-        String json = gson.toJson(addPersonList);
-        FileWriter writer = new FileWriter(filePath);
-        writer.write(json);
-        readJSONFile();
-        writer.close();
-        return true;
+    public boolean writeToJSON() throws AddressBookException {
+        try {
+            String json = gson.toJson(addPersonList);
+            FileWriter writer = new FileWriter(filePath);
+            writer.write(json);
+            readJSONFile();
+            writer.close();
+            return true;
+        } catch (IOException e){
+            throw new AddressBookException(AddressBookException.ExceptionType.IO_EXCEPTION,"You have entered some wrong path");
+        }
     }
 
     public boolean readJSONFile() {
@@ -145,22 +156,29 @@ public class AddressBook implements AddressBookContract {
         return flag;
     }
 
-    public File[] existingFile() {
-        String path = "/home/admin1/Desktop/suraj/AdressBook/src/main/resources/";
-        File file = new File(path);
-        File[] files = file.listFiles();
-        return files;
+    public File[] existingFile(String path) throws AddressBookException{
+        try {
+            File file = new File(path);
+            File[] files = file.listFiles();
+            return files;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new AddressBookException(AddressBookException.ExceptionType.ARRAY_INDEX_OUT_OF_BOUND,"Please enter valid slNo");
+        }
     }
 
-    public String openExistingFile(int slNo) {
-        Object filepath = null;
-        File[] file = existingFile();
-        filepath = file[slNo];
-        return filepath.toString();
+    public String openExistingFile(int slNo, String path) throws AddressBookException {
+        try {
+            Object filepath = null;
+            File[] file = existingFile(path);
+            filepath = file[slNo];
+            return filepath.toString();
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new AddressBookException(AddressBookException.ExceptionType.ARRAY_INDEX_OUT_OF_BOUND,"Please enter valid slNo");
+        }
     }
 
-    public boolean printFiles() {
-        File[] files = existingFile();
+    public boolean printFiles(String path) throws AddressBookException {
+        File[] files = existingFile(path);
         int slNo=0;
         System.out.println("slNo"+"\t"+"Files");
         for (File file: files) {

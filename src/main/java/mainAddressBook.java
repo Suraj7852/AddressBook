@@ -2,9 +2,10 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class mainAddressBook {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, AddressBookException {
         AddressBook addressBook = new AddressBook();
         Scanner sc = new Scanner(System.in);
+        String pathAddress = "/home/admin1/Desktop/suraj/AdressBook/src/main/resources/";
         boolean flag = true;
         while (flag){
             System.out.println("Enter your choice: \n1.Create NewFile\n2.See Existing File\n3.Quit");
@@ -13,13 +14,13 @@ public class mainAddressBook {
                 case 1:
                     System.out.println("Enter file Name: ");
                     String file = sc.next();
-                    addressBook.createNewAddressBook(file);
+                    addressBook.createNewAddressBook(file,pathAddress);
                     break;
                 case 2:
-                    addressBook.printFiles();
+                    addressBook.printFiles(pathAddress);
                     System.out.println("Choose slNo to select: ");
                     int option = sc.nextInt();
-                    String path = addressBook.openExistingFile(option);
+                    String path = addressBook.openExistingFile(option,pathAddress);
                     System.out.println(path);
                     AddressBook addressBook1 = new AddressBook(path);
                     String status = "true";
