@@ -6,6 +6,6 @@ public interface AddressBookContract {
     boolean printEntries();
     boolean deleteAPerson(int slNo) throws IOException;
     boolean sortEntitiesByName() throws IOException;
-    void sortEntitiesByZip() throws IOException;
-    void createNewAddressBook(String path) throws IOException;
+    boolean sortEntitiesByZip() throws IOException;
+    String createNewAddressBook(String path) throws IOException;
 }

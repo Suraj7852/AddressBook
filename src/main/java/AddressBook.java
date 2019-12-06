@@ -86,7 +86,7 @@ public class AddressBook implements AddressBookContract {
     }
 
     @Override
-    public boolean deleteAPerson(int slNo) throws IOException {
+    public boolean deleteAPerson(int slNo) {
         for (int details=0; details<readPersonDetails.length; details++) {
             if (slNo != details)
                 addPersonList.add(readPersonDetails[details]);
@@ -97,7 +97,7 @@ public class AddressBook implements AddressBookContract {
     }
 
     @Override
-    public boolean sortEntitiesByName() throws IOException {
+    public boolean sortEntitiesByName() {
         readJSONFile();
         Comparator<AddressBookPOJO> comparing = Comparator.comparing(AddressBookPOJO::getName);
         addPersonList.sort(comparing);
@@ -106,14 +106,16 @@ public class AddressBook implements AddressBookContract {
     }
 
     @Override
-    public void sortEntitiesByZip() throws IOException {
+    public boolean sortEntitiesByZip(){
         readJSONFile();
         Comparator<AddressBookPOJO> comparing = Comparator.comparing(AddressBookPOJO::getZip);
         addPersonList.sort(comparing);
+        flag = true;
+        return flag;
     }
 
     @Override
-    public void createNewAddressBook(String fileName) throws IOException {
+    public String createNewAddressBook(String fileName) throws IOException {
         String path = "/home/admin1/Desktop/suraj/AdressBook/src/main/resources/";
         File file = new File(path+fileName+".json");
         file.createNewFile();
@@ -122,6 +124,7 @@ public class AddressBook implements AddressBookContract {
         FileWriter writer = new FileWriter(file);
         writer.write(json);
         writer.close();
+        return fileName+".json";
     }
 
     public void writeToJSON() throws IOException {

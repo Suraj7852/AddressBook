@@ -1,6 +1,7 @@
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -50,14 +51,17 @@ public class AddressBookTest {
 
     @Test
     public void sortByZip() throws IOException {
-        AddressBook addressBook = new AddressBook();
-        addressBook.sortEntitiesByZip();
+        String s = addressBook.openExistingFile(1);
+        AddressBook addressBook = new AddressBook(s);
+        Assert.assertTrue(addressBook.sortEntitiesByZip());
     }
 
     @Test
     public void createAddressBook() throws IOException {
-        AddressBook addressBook = new AddressBook();
-        addressBook.createNewAddressBook("newAddressBook");
+        String s = addressBook.openExistingFile(1);
+        AddressBook addressBook = new AddressBook(s);
+        String newAddressBook2 = addressBook.createNewAddressBook("newAddressBook2");
+        Assert.assertEquals("newAddressBook2.json",newAddressBook2);
     }
 
     @Test
